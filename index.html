@@ -156,6 +156,35 @@
             background: rgba(34, 21, 16, 0.95);
         }
         
+        /* Header content color transitions */
+        .header-logo-text {
+            transition: color 0.3s ease;
+        }
+        
+        .glass-pill-header.scrolled .header-logo-text {
+            color: #fcf9f8;
+        }
+        
+        .header-nav-link {
+            transition: color 0.3s ease;
+        }
+        
+        .glass-pill-header.scrolled .header-nav-link {
+            color: rgba(252, 249, 248, 0.8);
+        }
+        
+        .glass-pill-header.scrolled .header-nav-link:hover {
+            color: #bd3b0f;
+        }
+        
+        .header-icon {
+            transition: color 0.3s ease;
+        }
+        
+        .glass-pill-header.scrolled .header-icon {
+            color: #bd3b0f;
+        }
+        
         .loader {
             position: fixed;
             inset: 0;
@@ -191,16 +220,16 @@
 
     <div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4" id="headerContainer">
         <nav class="glass-pill-header px-6 py-3 flex items-center justify-between" id="navbar">
-            <a href="#" class="flex items-center gap-2 text-primary group">
-                <span class="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform">restaurant</span>
-                <span class="hidden sm:block text-lg font-bold tracking-tight">La Bella 'Mbriana</span>
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="material-symbols-outlined header-icon text-2xl text-primary group-hover:rotate-12 transition-transform">restaurant</span>
+                <span class="header-logo-text hidden sm:block text-lg font-bold tracking-tight text-slate-800 dark:text-cream">La Bella 'Mbriana</span>
             </a>
             
             <div class="flex items-center gap-4 md:gap-6">
                 <div class="hidden md:flex items-center gap-6 text-sm font-medium">
-                    <a class="text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#menu">Menu</a>
-                    <a class="text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#story">Storia</a>
-                    <a class="text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#gallery">Gallery</a>
+                    <a class="header-nav-link text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#menu">Menu</a>
+                    <a class="header-nav-link text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#story">Storia</a>
+                    <a class="header-nav-link text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#gallery">Gallery</a>
                 </div>
                 
                 <a href="#reservations" class="bg-primary hover:bg-primary-dark text-white text-sm font-bold py-2 px-5 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-primary/20 flex items-center gap-2">
@@ -208,7 +237,7 @@
                     <span class="hidden sm:inline">Book</span>
                 </a>
                 
-                <button class="md:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-primary transition-colors" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                <button class="md:hidden p-2 header-nav-link text-slate-700 dark:text-slate-200 hover:text-primary transition-colors" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
             </div>
