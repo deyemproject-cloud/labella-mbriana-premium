@@ -130,6 +130,32 @@
             100% { transform: rotate(5deg) scale(1.1); }
         }
         
+        /* Glass Pill Header */
+        .glass-pill-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .glass-pill-header.scrolled {
+            background: rgba(34, 21, 16, 0.85);
+            border-color: rgba(189, 59, 15, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        
+        .dark .glass-pill-header {
+            background: rgba(34, 21, 16, 0.7);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .dark .glass-pill-header.scrolled {
+            background: rgba(34, 21, 16, 0.95);
+        }
+        
         .loader {
             position: fixed;
             inset: 0;
@@ -163,26 +189,41 @@
         <div class="w-48 h-0.5 bg-gradient-to-r from-primary to-olive mt-4" id="loaderLine" style="width: 0%"></div>
     </div>
 
-    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
-        <div class="absolute inset-0 bg-cream/80 dark:bg-cream-dark/80 backdrop-blur-md border-b border-primary/10 shadow-sm"></div>
-        <div class="relative max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-2 text-primary">
-                <span class="material-symbols-outlined text-3xl">restaurant</span>
-                <span class="hidden md:block text-xl font-bold tracking-tight">La Bella 'Mbriana</span>
-            </div>
-            <div class="flex items-center gap-8">
-                <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <a class="text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-px after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#menu">Menu</a>
-                    <a class="text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-px after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#story">Storia</a>
-                    <a class="text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-px after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#gallery">Gallery</a>
+    <div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4" id="headerContainer">
+        <nav class="glass-pill-header px-6 py-3 flex items-center justify-between" id="navbar">
+            <a href="#" class="flex items-center gap-2 text-primary group">
+                <span class="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform">restaurant</span>
+                <span class="hidden sm:block text-lg font-bold tracking-tight">La Bella 'Mbriana</span>
+            </a>
+            
+            <div class="flex items-center gap-4 md:gap-6">
+                <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+                    <a class="text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#menu">Menu</a>
+                    <a class="text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#story">Storia</a>
+                    <a class="text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full" href="#gallery">Gallery</a>
                 </div>
-                <a href="#reservations" class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2.5 px-6 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-primary/20 flex items-center gap-2">
+                
+                <a href="#reservations" class="bg-primary hover:bg-primary-dark text-white text-sm font-bold py-2 px-5 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-primary/20 flex items-center gap-2">
                     <span class="material-symbols-outlined text-[18px]">calendar_month</span>
-                    <span>Reservations</span>
+                    <span class="hidden sm:inline">Book</span>
                 </a>
+                
+                <button class="md:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-primary transition-colors" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
+        </nav>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden fixed inset-0 z-40 bg-cream-dark/95 backdrop-blur-xl pt-24">
+        <div class="flex flex-col items-center gap-8">
+            <a href="#menu" class="text-2xl font-serif text-cream hover:text-primary transition-colors" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Menu</a>
+            <a href="#story" class="text-2xl font-serif text-cream hover:text-primary transition-colors" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Storia</a>
+            <a href="#gallery" class="text-2xl font-serif text-cream hover:text-primary transition-colors" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Gallery</a>
+            <a href="#reservations" class="mt-4 px-8 py-3 bg-primary text-white rounded-full text-lg" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Prenota</a>
         </div>
-    </nav>
+    </div>
 
     <section class="relative min-h-screen flex flex-col justify-center items-center pt-20 overflow-hidden bg-cream dark:bg-cream-dark">
         <div class="absolute inset-0 bg-linen-texture opacity-60 mix-blend-multiply pointer-events-none"></div>
@@ -455,14 +496,21 @@
             ease: 'power3.out'
         });
         
+        // Glass pill header scroll effect
         ScrollTrigger.create({
-            start: 100,
+            start: 50,
             onUpdate: (self) => {
-                const nav = document.getElementById('navbar');
-                if (self.scroll() > 100) {
-                    nav.classList.add('shadow-lg');
+                const header = document.getElementById('navbar');
+                const headerContainer = document.getElementById('headerContainer');
+                if (self.scroll() > 50) {
+                    header.classList.add('scrolled');
+                    headerContainer.style.top = '12px';
+                    headerContainer.style.maxWidth = '800px';
                 } else {
-                    nav.classList.remove('shadow-lg');
+                    header.classList.remove('scrolled');
+                    headerContainer.style.top = '16px';
+                    headerContainer.style.maxWidth = '100%';
+                    headerContainer.style.maxWidth = '896px'; // max-w-4xl
                 }
             }
         });
